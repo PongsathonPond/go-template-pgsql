@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  idev-cms-service:
+    container_name: idev-cms-service
+    image: idev-cms-service:sit
+    ports:
+      - '8092:8080'
+    restart: always
+    environment:
+      APP_ENV: sit
+
+networks:
+  default:
+    external:
+      name: idev-network

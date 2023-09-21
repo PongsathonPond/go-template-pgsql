@@ -1,0 +1,3568 @@
+definitions:
+  Error400Response:
+    properties:
+      code:
+        example: 400
+        type: integer
+      status:
+        example: Bad request
+        type: string
+    type: object
+  Error404Response:
+    properties:
+      code:
+        example: 404
+        type: integer
+      status:
+        example: Not found
+        type: string
+    type: object
+  Error422Response:
+    properties:
+      code:
+        example: 422
+        type: integer
+      status:
+        example: Attempt error
+        type: string
+    type: object
+  Error500Response:
+    properties:
+      code:
+        example: 500
+        type: integer
+      status:
+        example: Internal server error
+        type: string
+    type: object
+  ErrorItemResponse:
+    properties:
+      cause:
+        example: Some Error Message (REPOSITORY:READ)
+        type: string
+      code:
+        example: REPOSITORY
+        type: string
+      subCode:
+        example: READ
+        type: string
+    type: object
+  LoginInput:
+    properties:
+      password:
+        example: adminidev1234
+        type: string
+      username:
+        example: admin@idev.com
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  MeView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      email:
+        example: email@example.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: "1400000000000000000"
+        type: string
+      image_profile:
+        example: https://media.idev.com/images/1624440506.jpeg
+        type: string
+      last_name:
+        example: Smith
+        type: string
+      mobile:
+        example: "0900000000"
+        type: string
+      role:
+        example: "1400000000000000000"
+        type: string
+      role_data:
+        $ref: '#/definitions/RoleData'
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      username:
+        example: email@example.com
+        type: string
+      verified:
+        example: false
+        type: boolean
+    type: object
+  PermissionInput:
+    properties:
+      key_sub_menu:
+        example: ga
+        type: string
+      permission:
+        $ref: '#/definitions/RolesPermission'
+    required:
+    - key_sub_menu
+    type: object
+  ProfileUpdateInput:
+    properties:
+      first_name:
+        example: John
+        type: string
+      image_profile:
+        example: https://media.idev.com/images/1624440506.jpeg
+        type: string
+      last_name:
+        example: Smith
+        type: string
+      mobile:
+        example: "0900000000"
+        type: string
+    required:
+    - first_name
+    - last_name
+    type: object
+  RefreshTokenInput:
+    properties:
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXvCj9...
+        type: string
+    required:
+    - refresh_token
+    type: object
+  RefreshTokenView:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXvCj9...
+        type: string
+      access_token_expires:
+        example: 3600
+        type: integer
+    type: object
+  ResendActivateInput:
+    properties:
+      user_id:
+        example: "123456789"
+        type: string
+    required:
+    - user_id
+    type: object
+  RoleCreateInput:
+    properties:
+      description:
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
+          risus ante, nec dignissim orci mollis vitae
+        type: string
+      name:
+        example: Admin
+        type: string
+      permissions:
+        items:
+          $ref: '#/definitions/PermissionInput'
+        minItems: 1
+        type: array
+      status:
+        enum:
+        - active
+        - inactive
+        example: active
+        type: string
+    required:
+    - name
+    - permissions
+    - status
+    type: object
+  RoleData:
+    properties:
+      id:
+        example: "1400000000000000000"
+        type: string
+      name:
+        example: Admin
+        type: string
+    type: object
+  RoleSubMenuView:
+    properties:
+      can_set_permission:
+        $ref: '#/definitions/RolesPermission'
+      icon:
+        example: some_sub_menu_icon
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: some_sub_menu_name
+        type: string
+      path:
+        example: some_sub_menu_path
+        type: string
+      roles_permission:
+        $ref: '#/definitions/RolesPermission'
+    type: object
+  RolesPermission:
+    properties:
+      can_create:
+        example: false
+        type: boolean
+      can_delete:
+        example: true
+        type: boolean
+      can_read:
+        example: true
+        type: boolean
+      can_update:
+        example: false
+        type: boolean
+    type: object
+  SubMenuView:
+    properties:
+      can_set_permission:
+        $ref: '#/definitions/RolesPermission'
+      icon:
+        example: some_icon
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: John Smith
+        type: string
+      path:
+        example: some_path
+        type: string
+      status:
+        example: active
+        type: string
+    type: object
+  SuccessCreateResponse:
+    properties:
+      code:
+        example: 201
+        type: integer
+      data:
+        example: "1400000000000000001"
+        type: string
+      status:
+        example: Create data success
+        type: string
+    type: object
+  SuccessDefaultResp:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Success
+        type: string
+    type: object
+  SuccessDeleteResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Delete data success
+        type: string
+    type: object
+  SuccessGetAllResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Get data success
+        type: string
+    type: object
+  SuccessLoginResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Login success
+        type: string
+    type: object
+  SuccessLogoutResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Logout success
+        type: string
+    type: object
+  SuccessPaginatorDataListWithOption:
+    properties:
+      option:
+        $ref: '#/definitions/SuccessPaginatorOptionResponse'
+    type: object
+  SuccessPaginatorFilterData:
+    properties:
+      key:
+        example: name
+        type: string
+      operation:
+        example: eq
+        type: string
+      raw:
+        example: name:eq:John
+        type: string
+      value:
+        example: John
+        type: string
+    type: object
+  SuccessPaginatorOptionResponse:
+    properties:
+      current_page:
+        example: 1
+        type: integer
+      filters:
+        items:
+          $ref: '#/definitions/SuccessPaginatorFilterData'
+        type: array
+      per_page:
+        example: 15
+        type: integer
+      search:
+        items:
+          $ref: '#/definitions/SuccessPaginatorSearchData'
+        type: array
+      sorts:
+        items:
+          $ref: '#/definitions/SuccessPaginatorSortData'
+        type: array
+      total:
+        example: 1
+        type: integer
+      total_page:
+        example: 1
+        type: integer
+    type: object
+  SuccessPaginatorResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Get data success
+        type: string
+    type: object
+  SuccessPaginatorSearchData:
+    properties:
+      key:
+        example: name
+        type: string
+      raw:
+        example: name:eq:John
+        type: string
+      value:
+        example: John
+        type: string
+    type: object
+  SuccessPaginatorSortData:
+    properties:
+      key:
+        example: created_at
+        type: string
+      raw:
+        example: created_at:desc
+        type: string
+      value:
+        example: desc
+        type: string
+    type: object
+  SuccessReadResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Get data success
+        type: string
+    type: object
+  SuccessUpdateResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      status:
+        example: Update data success
+        type: string
+    type: object
+  UserActivateInput:
+    properties:
+      activate_token:
+        example: JrEjJNZpjuaWQA3Ihp...
+        type: string
+      password:
+        example: John
+        type: string
+    required:
+    - activate_token
+    - password
+    type: object
+  UserChangePasswordInput:
+    properties:
+      new_password:
+        example: "123456789"
+        type: string
+      old_password:
+        example: "123456789"
+        type: string
+    required:
+    - new_password
+    - old_password
+    type: object
+  UserCreateInput:
+    properties:
+      email:
+        example: email@example.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      image_profile:
+        example: https://media.idev.com/images/1624440506.jpeg
+        type: string
+      last_name:
+        example: Smith
+        type: string
+      mobile:
+        example: "0900000000"
+        type: string
+      password:
+        example: U2FsdGVkX1+pqoATrmFheH7j5P6RXSwelcxoiiFOP2U=
+        type: string
+      role:
+        example: "1400000000000000000"
+        type: string
+      status:
+        enum:
+        - active
+        - inactive
+        example: active
+        type: string
+    required:
+    - email
+    - first_name
+    - last_name
+    - password
+    - role
+    - status
+    type: object
+  UserReadView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      created_by:
+        example: "1400000000000000000"
+        type: string
+      created_by_data:
+        $ref: '#/definitions/inout.CreatedByData'
+      email:
+        example: email@example.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: "1400000000000000000"
+        type: string
+      image_profile:
+        example: https://media.idev.com/images/1624440506.jpeg
+        type: string
+      last_name:
+        example: Smith
+        type: string
+      mobile:
+        example: "0900000000"
+        type: string
+      role:
+        example: "1400000000000000000"
+        type: string
+      role_data:
+        $ref: '#/definitions/RoleData'
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      username:
+        example: email@example.com
+        type: string
+    type: object
+  UserUpdateInput:
+    properties:
+      email:
+        example: email@example.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      image_profile:
+        example: https://media.idev.com/images/1624440506.jpeg
+        type: string
+      last_name:
+        example: Smith
+        type: string
+      mobile:
+        example: "0900000000"
+        type: string
+      role:
+        example: "1400000000000000000"
+        type: string
+      status:
+        enum:
+        - active
+        - inactive
+        example: active
+        type: string
+    required:
+    - first_name
+    - last_name
+    - role
+    - status
+    type: object
+  UserViewWithToken:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXvCj9...
+        type: string
+      access_token_expires:
+        example: 3600
+        type: integer
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      email:
+        example: admin@seeitlive.com
+        type: string
+      first_name:
+        example: Administrator
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      image_profile:
+        example: https://media.seeitlivethailand.com/images/3b5e8a59-dc59-4548-862f-89267485f968.png
+        type: string
+      last_name:
+        example: See it Live
+        type: string
+      mobile:
+        example: "021002002"
+        type: string
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXvCj9...
+        type: string
+      refresh_token_expires:
+        example: 24000
+        type: integer
+      role:
+        example: "123456789012345678"
+        type: string
+      role_data:
+        $ref: '#/definitions/RoleData'
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      username:
+        example: admin
+        type: string
+    type: object
+  VerifyActivateTokenInput:
+    properties:
+      activate_token:
+        example: JrEjJNZpjuaWQA3Ihp...
+        type: string
+    required:
+    - activate_token
+    type: object
+  inout.CategoryCreateInput:
+    properties:
+      name:
+        type: string
+    type: object
+  inout.CategoryData:
+    properties:
+      id:
+        example: "1"
+        type: string
+      name:
+        type: string
+    type: object
+  inout.CategoryUpdateInput:
+    properties:
+      name:
+        type: string
+    type: object
+  inout.CategoryView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      name:
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.ContentCreateInput:
+    properties:
+      category_id:
+        type: string
+      content:
+        type: string
+      description:
+        type: string
+      images:
+        type: string
+      link_one_page:
+        type: string
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  inout.ContentUpdateInput:
+    properties:
+      category_id:
+        type: string
+      content:
+        type: string
+      description:
+        type: string
+      images:
+        type: string
+      link_one_page:
+        type: string
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  inout.ContentView:
+    properties:
+      category_data:
+        $ref: '#/definitions/inout.CategoryData'
+      content:
+        type: string
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      created_by_data:
+        $ref: '#/definitions/inout.CreatedByData'
+      description:
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      images:
+        type: string
+      link_one_page:
+        type: string
+      title:
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.CreatedByData:
+    properties:
+      first_name:
+        example: Admin
+        type: string
+      id:
+        example: "1400000000000000000"
+        type: string
+      last_name:
+        example: Admin
+        type: string
+    type: object
+  inout.MenuPermissionView:
+    properties:
+      icon:
+        example: some_icon
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: some_menu_name
+        type: string
+      sort:
+        example: 1
+        type: integer
+      sub_menus:
+        items:
+          $ref: '#/definitions/subMenuPermission'
+        type: array
+    type: object
+  inout.MenuView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      icon:
+        example: some_icon
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: John Smith
+        type: string
+      sort:
+        example: 1
+        type: integer
+      status:
+        example: active
+        type: string
+      sub_menus:
+        items:
+          $ref: '#/definitions/SubMenuView'
+        type: array
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.MenuWithRolePermView:
+    properties:
+      icon:
+        example: some_icon
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: some_menu_name
+        type: string
+      sub_menus:
+        items:
+          $ref: '#/definitions/RoleSubMenuView'
+        type: array
+    type: object
+  inout.RoleReadView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      description:
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
+          risus ante, nec dignissim orci mollis vitae
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      name:
+        example: Admin
+        type: string
+      roles_menus:
+        items:
+          $ref: '#/definitions/inout.MenuWithRolePermView'
+        type: array
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.RoleUpdateInput:
+    properties:
+      description:
+        example: Lorem ipsum dolor
+        type: string
+      name:
+        example: Admin
+        type: string
+      permissions:
+        items:
+          $ref: '#/definitions/PermissionInput'
+        minItems: 1
+        type: array
+      status:
+        enum:
+        - active
+        - inactive
+        example: inactive
+        type: string
+    required:
+    - name
+    - permissions
+    - status
+    type: object
+  inout.RolesAllView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      id:
+        example: "123456789012345678"
+        type: string
+      name:
+        example: Admin
+        type: string
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.RolesListView:
+    properties:
+      created_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+      created_by:
+        example: "2016-01-02 15:04:05"
+        type: string
+      created_by_data:
+        $ref: '#/definitions/inout.createdByData'
+      id:
+        example: "123456789012345678"
+        type: string
+      name:
+        example: Admin
+        type: string
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2016-01-02 15:04:05"
+        type: string
+    type: object
+  inout.createdByData:
+    properties:
+      first_name:
+        example: John
+        type: string
+      id:
+        example: "1410548436742172672"
+        type: string
+      last_name:
+        example: Smith
+        type: string
+    type: object
+  inout.rolePermission:
+    properties:
+      can_create:
+        example: false
+        type: boolean
+      can_delete:
+        example: false
+        type: boolean
+      can_read:
+        example: true
+        type: boolean
+      can_update:
+        example: true
+        type: boolean
+    type: object
+  subMenuPermission:
+    properties:
+      icon:
+        example: some_sub_menu_icon
+        type: string
+      key_slug:
+        example: key_slug
+        type: string
+      name:
+        example: some_sub_menu_name
+        type: string
+      path:
+        example: some_sub_menu_path
+        type: string
+      role_permission:
+        $ref: '#/definitions/inout.rolePermission'
+    type: object
+info:
+  contact:
+    email: devmaster@idev.com
+    name: the developer
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+paths:
+  /activate/resend:
+    post:
+      consumes:
+      - application/json
+      description: Resend activation link to Email
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/ResendActivateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDefaultResp'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Resend activation link
+      tags:
+      - Activation
+  /activate/verify:
+    post:
+      consumes:
+      - application/json
+      description: Verify activate token before set password for first time login
+        form Invitation link
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/VerifyActivateTokenInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDefaultResp'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Verify activate token form Invitation link
+      tags:
+      - Verify
+  /all/menus:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of Menus filtered by a given filters if any
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: A User Group Keyslug
+        in: query
+        name: user_group
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessGetAllResponse'
+            - properties:
+                lists:
+                  items:
+                    $ref: '#/definitions/inout.MenuView'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Get a list of Menus
+      tags:
+      - Menus
+  /all/roles:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of all roles
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/inout.RolesAllView'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Get all data of roles
+      tags:
+      - Roles
+  /category:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of category filtered by a given filters if any
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: 1
+        description: A page number
+        in: query
+        name: page
+        type: integer
+      - default: 15
+        description: A total number of items per page
+        in: query
+        name: per_page
+        type: integer
+      - collectionFormat: csv
+        description: Condition for category retrieval, ex. `status:eq:active` | `age:gte:25`
+        in: query
+        items:
+          type: string
+        name: filters
+        type: array
+      - collectionFormat: csv
+        description: Search with like condition for category retrieval, ex. `name:john`
+        in: query
+        items:
+          type: string
+        name: search
+        type: array
+      - collectionFormat: csv
+        description: Sort for category data, ex. `created_at:asc`
+        in: query
+        items:
+          type: string
+        name: sorts
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessPaginatorResponse'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/SuccessPaginatorDataListWithOption'
+                  - properties:
+                      lists:
+                        items:
+                          $ref: '#/definitions/inout.CategoryView'
+                        type: array
+                    type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a list of category
+      tags:
+      - Category
+    post:
+      consumes:
+      - application/json
+      description: A newly created category, ID will be given in a Category-Location
+        response header
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/inout.CategoryCreateInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessCreateResponse'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Create a new category
+      tags:
+      - Category
+  /category/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete category with a given category ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDeleteResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Delete contents of a category
+      tags:
+      - Category
+    get:
+      consumes:
+      - application/json
+      description: Response a category data with a given category ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/inout.CategoryView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a category by category ID
+      tags:
+      - Category
+    put:
+      consumes:
+      - application/json
+      description: Update category with a given category ID according to a given data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/inout.CategoryUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Update contents of a category
+      tags:
+      - Category
+  /content:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of content filtered by a given filters if any
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: 1
+        description: A page number
+        in: query
+        name: page
+        type: integer
+      - default: 15
+        description: A total number of items per page
+        in: query
+        name: per_page
+        type: integer
+      - collectionFormat: csv
+        description: Condition for content retrieval, ex. `status:eq:active` | `age:gte:25`
+        in: query
+        items:
+          type: string
+        name: filters
+        type: array
+      - collectionFormat: csv
+        description: Search with like condition for content retrieval, ex. `name:john`
+        in: query
+        items:
+          type: string
+        name: search
+        type: array
+      - collectionFormat: csv
+        description: Sort for content data, ex. `created_at:asc`
+        in: query
+        items:
+          type: string
+        name: sorts
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessPaginatorResponse'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/SuccessPaginatorDataListWithOption'
+                  - properties:
+                      lists:
+                        items:
+                          $ref: '#/definitions/inout.ContentView'
+                        type: array
+                    type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a list of content
+      tags:
+      - Content
+    post:
+      consumes:
+      - application/json
+      description: A newly created content, ID will be given in a Content-Location
+        response header
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/inout.ContentCreateInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessCreateResponse'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Create a new content
+      tags:
+      - Content
+  /content/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete content with a given content ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Content ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDeleteResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Delete contents of a content
+      tags:
+      - Content
+    get:
+      consumes:
+      - application/json
+      description: Response a content data with a given content ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Content ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/inout.ContentView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a content by content ID
+      tags:
+      - Content
+    put:
+      consumes:
+      - application/json
+      description: Update content with a given content ID according to a given data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Content ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/inout.ContentUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Update contents of a content
+      tags:
+      - Content
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Use this operation to obtain an authorization token which could
+        be used in all other operations
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/LoginInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessLoginResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/UserViewWithToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Create auth token from username and password
+      tags:
+      - Auth
+  /logout:
+    post:
+      consumes:
+      - application/json
+      description: Invalidate currently used token
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessLogoutResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Invalidate currently used token
+      tags:
+      - Auth
+  /me:
+    get:
+      consumes:
+      - application/json
+      description: Response me data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/MeView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get me data
+      tags:
+      - User Profile
+    put:
+      consumes:
+      - application/json
+      description: Update me with a given data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Update contents of me
+      tags:
+      - User Profile
+  /me/activate:
+    post:
+      consumes:
+      - application/json
+      description: Set password for first time login form Invitation link
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/UserActivateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDefaultResp'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Set password form Invitation link
+      tags:
+      - Activation
+  /me/password:
+    put:
+      consumes:
+      - application/json
+      description: Update password of a user by token
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/UserChangePasswordInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Update password of a user
+      tags:
+      - User Profile
+  /me/permissions:
+    get:
+      consumes:
+      - application/json
+      description: Response user permission data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/inout.MenuPermissionView'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get user permission
+      tags:
+      - User Permission
+  /roles:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of roles filtered by a given filters if any
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: 1
+        description: A page number
+        in: query
+        name: page
+        type: integer
+      - default: 15
+        description: A total number of items per page
+        in: query
+        name: per_page
+        type: integer
+      - collectionFormat: csv
+        description: Condition for roles retrieval, ex. `name:eq:John` | `name:like:smith`
+        in: query
+        items:
+          type: string
+        name: filters
+        type: array
+      - collectionFormat: csv
+        description: Sort for roles data, ex. `created_at:asc`
+        in: query
+        items:
+          type: string
+        name: sorts
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessPaginatorResponse'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/SuccessPaginatorDataListWithOption'
+                  - properties:
+                      lists:
+                        items:
+                          $ref: '#/definitions/inout.RolesListView'
+                        type: array
+                    type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a list of roles
+      tags:
+      - Roles
+    post:
+      consumes:
+      - application/json
+      description: A newly created role, ID will be given in a Content-Location response
+        header
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/RoleCreateInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessCreateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Create a new role
+      tags:
+      - Roles
+  /roles/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete role with a given role ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Role ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDeleteResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Delete contents of a role
+      tags:
+      - Roles
+    get:
+      consumes:
+      - application/json
+      description: Response a role data with a given staff ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Role ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/inout.RoleReadView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Get a role by role ID
+      tags:
+      - Roles
+    put:
+      consumes:
+      - application/json
+      description: Update role with a given role ID according to a given data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: Role ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/inout.RoleUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Update contents of a role
+      tags:
+      - Roles
+  /token/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Use this operation to obtain new authorization token which could
+        be used in all other operations
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/RefreshTokenInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/RefreshTokenView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      summary: Renew your access token by refresh token
+      tags:
+      - Auth
+  /token/revoke:
+    post:
+      consumes:
+      - application/json
+      description: Invalidate all of your tokens
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Invalidate all of your tokens
+      tags:
+      - Auth
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of users filtered by a given filters if any
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: 1
+        description: A page number
+        in: query
+        name: page
+        type: integer
+      - default: 15
+        description: A total number of items per page
+        in: query
+        name: per_page
+        type: integer
+      - collectionFormat: csv
+        description: Condition for users retrieval, ex. `name:eq:John` | `name:like:smith`
+        in: query
+        items:
+          type: string
+        name: filters
+        type: array
+      - collectionFormat: csv
+        description: Sort for users data, ex. `created_at:asc`
+        in: query
+        items:
+          type: string
+        name: sorts
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessPaginatorResponse'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/SuccessPaginatorDataListWithOption'
+                  - properties:
+                      lists:
+                        items:
+                          $ref: '#/definitions/UserReadView'
+                        type: array
+                    type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a list of users
+      tags:
+      - Users
+    post:
+      consumes:
+      - application/json
+      description: A newly created user
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/UserCreateInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/SuccessCreateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Create a new user
+      tags:
+      - Users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete user with a given user ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessDeleteResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Delete contents of a user
+      tags:
+      - Users
+    get:
+      consumes:
+      - application/json
+      description: Response a user data with a given user ID
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessReadResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/UserReadView'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Get a user by user ID
+      tags:
+      - Users
+    put:
+      consumes:
+      - application/json
+      description: Update user with a given user ID according to a given data
+      parameters:
+      - default: en
+        description: Language
+        in: header
+        name: Accept-Language
+        type: string
+      - default: "123456789012345678"
+        description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Input
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/UserUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/SuccessUpdateResponse'
+            - properties:
+                data:
+                  type: object
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error400Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error404Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "422":
+          description: Unprocessable Entity
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error422Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/Error500Response'
+            - properties:
+                errors:
+                  items:
+                    $ref: '#/definitions/ErrorItemResponse'
+                  type: array
+              type: object
+      security:
+      - BearerAuth: []
+      summary: Update contents of a user
+      tags:
+      - Users
+securityDefinitions:
+  BearerAuth:
+    in: 'header like: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXvCj9...'
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

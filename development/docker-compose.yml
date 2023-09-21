@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  postgres:
+    container_name: postgres_idev_edemy
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: adminidev
+      POSTGRES_PASSWORD: g9Npp7VTaCb4z0WjMs7TNOVUc3SC7ZD9xmJaLqCDef9jdy2X8y
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-db:/data/postgres
+    ports:
+      - "5433:5432"
+
+volumes:
+  postgres-db:
+    driver: local
